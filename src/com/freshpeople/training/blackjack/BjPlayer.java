@@ -2,7 +2,6 @@ package com.freshpeople.training.blackjack;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.Scanner;
 
 /**
  * プレイヤー具象クラス
