@@ -3,14 +3,14 @@ package com.freshpeople.training.blackjack;
 /**
  * トランプの1枚の情報を保持するクラス
  * mark : "Spade", "Club", "Heart", "Diamond"
- * number : 数字 (11 = "J", 12 = "Q", 13 = "K" の文字列で保持する)
- * @author 
+ * number : 数字 (0 = "A", 10 = "J", 11 = "Q", 12 = "K" の文字列で保持する)
+ * @author
  *
  */
 public class Card {
 	private String mark = "";
 	private String number = "";
-	
+
 	/**
 	 * コンストラクタ
 	 * @param mark
@@ -24,7 +24,7 @@ public class Card {
 		else if (number == 12) {this.number = "K";}
 		else {this.number = String.valueOf(number+1);}
 	}
-	
+
 	/**
 	 * マーク文字列を取得します。
 	 * @return
@@ -32,7 +32,7 @@ public class Card {
 	public String getMark() {
 		return mark;
 	}
-	
+
 	/**
 	 * カードの数値を取得します。
 	 * @return
@@ -44,7 +44,7 @@ public class Card {
 		else if (number.equals("K")) {return 13;}
 		else {return Integer.parseInt(number);}
 	}
-	
+
 	/**
 	 * カードの数値を文字列で取得します。
 	 * @return

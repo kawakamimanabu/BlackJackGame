@@ -5,15 +5,15 @@ import java.util.List;
 
 /**
  * BlackJack プレイヤー抽象クラス
- * @author 
+ * @author
  *
  */
 public abstract class BaseBjPlayer {
 	private String playerName;
 	// 21 を超えたらバスト
 	protected boolean bust = false;
-	// ディーラーか否か
-	protected boolean dealer = false;
+	// 21 との差
+	protected int diff = 21;
 	// 手持ちのカード一覧
 	protected List<Card> myCardList = new ArrayList<>();
 
@@ -31,32 +31,33 @@ public abstract class BaseBjPlayer {
 	 * @return
 	 */
 	public abstract boolean judgeHit();
-	
+
 	/**
 	 * 手持ちのカードリストにカードを追加する
 	 * @param c
 	 */
 	public void addCard(Card c) {
 		myCardList.add(c);
-		getSum();
+		diff = 21 - getSum();
 	}
-	
+
 	/**
 	 * 手持ちのカードを表示する。
 	 */
 	public void showMyCards() {
 		System.out.println("*** [" + playerName + "] ***");
 		myCardList.stream().forEach(System.out::println);
-		System.out.println("Sum : [" + getSum() + "], diff : [" + (21 - getSum()) + "]");
+		System.out.println("Sum : [" + getSum() + "], diff : [" + diff + "]");
 		if (bust) {
 			System.out.println("Busted!!");
 		}
 		System.out.println("*** [end] ***");
 	}
-	
+
 	/**
 	 * 合計を取得する。
 	 * A（エース）は、手持ちのカードの合計が21を超えない範囲で11と数え、超える場合は1として数える。
+	 * J, Q, K は 10 として数える
 	 * 21 を超えた場合は bust 状態になる。
 	 * @return
 	 */
@@ -74,7 +75,7 @@ public abstract class BaseBjPlayer {
 		if (sum > 21) {bust = true;}
 		return sum;
 	}
-	
+
 	//--- getter, setter ---
 	public String getPlayerName() {
 		return playerName;
@@ -88,9 +89,13 @@ public abstract class BaseBjPlayer {
 		return bust;
 	}
 
-	public boolean isDealer() {
-		return dealer;
+	/**
+	 * @return diff
+	 */
+	public int getDiff() {
+		return diff;
 	}
-	
-	
+
+
+
 }
