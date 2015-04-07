@@ -10,7 +10,7 @@ import java.util.Random;
  *
  */
 public class CardManager {
-	String[] cardMark = {"Spade", "Club", "Heart", "Diamond"};
+	private String[] cardMark = {"Spade", "Club", "Heart", "Diamond"};
 	private List<Card> cardList = new ArrayList<>();
 
 	//--- public methods ---
