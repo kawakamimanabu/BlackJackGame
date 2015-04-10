@@ -10,15 +10,15 @@ import java.util.Random;
  *
  */
 public class CardManager {
-	private String[] cardMark = {"Spade", "Club", "Heart", "Diamond"};
-	private List<Card> cardList = new ArrayList<>();
+	private final String[] cardMark = {"Spade", "Club", "Heart", "Diamond"};
+	private final List<Card> cardList = new ArrayList<>();
 
 	//--- public methods ---
 	/**
 	 * Joker 2 枚を除く全てのカードをListに詰める
 	 */
 	public void init() {
-		cardList = new ArrayList<>();
+		cardList.clear();
 		for (String mark : cardMark) {
 			for (int i = 0; i < 13; i++) {
 				Card card = new Card(mark, i);
@@ -39,16 +39,9 @@ public class CardManager {
 		return c;
 	}
 
-	//--- private methods ---
-
-
 	//--- getter, setter ---
 	public List<Card> getCardList() {
 		return cardList;
-	}
-
-	public void setCardList(List<Card> cardList) {
-		this.cardList = cardList;
 	}
 
 }

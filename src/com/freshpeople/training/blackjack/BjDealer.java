@@ -34,9 +34,9 @@ public class BjDealer extends BaseBjPlayer implements DealerTask {
 	@Override
 	public void showMyFirstCard() {
 		if (myCardList.size() > 1) {
-			System.out.println("*** dealer's first card ***");
-			System.out.println(myCardList.get(0).toString());
-			System.out.println("********");
+			System.out.println("\t*** dealer's first card ***");
+			System.out.println("\t" + myCardList.get(0).toString());
+			System.out.println("\t********");
 		}
 	}
 
@@ -86,6 +86,9 @@ public class BjDealer extends BaseBjPlayer implements DealerTask {
 			player.showMyCards();
 			if (player.isBust() || (player.getDiff() > diff && !isBust())) {
 				System.out.println(player.getPlayerName() + " missed the game...");
+			}
+			else if (player.isBust() && isBust()) {
+				System.out.println("Draw.");
 			}
 			else {
 				System.out.println(player.getPlayerName() + " won the game!!");
