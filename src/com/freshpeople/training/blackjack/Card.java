@@ -22,7 +22,7 @@ public class Card {
 		else if (number == 10) {this.number = "J";}
 		else if (number == 11) {this.number = "Q";}
 		else if (number == 12) {this.number = "K";}
-		else {this.number = String.valueOf(number+1);}
+		else {this.number = String.valueOf(number + 1);}
 	}
 
 	/**
