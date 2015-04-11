@@ -49,9 +49,8 @@ public abstract class BaseBjPlayer {
 		myCardList.stream().forEach(System.out::println);
 		System.out.println("Sum : [" + getSum() + "], diff : [" + diff + "]");
 		if (bust) {
-			System.out.println("Busted!!");
+			System.out.println(playerName + " Busted!!");
 		}
-		System.out.println("*** [end] ***");
 	}
 
 	/**

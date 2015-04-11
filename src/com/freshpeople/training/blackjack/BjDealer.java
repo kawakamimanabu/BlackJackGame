@@ -79,16 +79,16 @@ public class BjDealer extends BaseBjPlayer implements DealerTask {
 	 * 結果判定
 	 */
 	private void judgeGame() {
-		System.out.println(">>>>>>>>>>");
+		System.out.println("\n\n>>>>>>>>>>");
 		showMyCards();
 
 		for(BaseBjPlayer player : bjPlayerList) {
 			player.showMyCards();
-			if (player.isBust() || (player.getDiff() > diff && !isBust())) {
-				System.out.println(player.getPlayerName() + " missed the game...");
-			}
-			else if (player.isBust() && isBust()) {
+			if (player.isBust() && isBust() || player.getDiff() == diff) {
 				System.out.println("Draw.");
+			}
+			else if (player.isBust() && !isBust() || (player.getDiff() > diff && !isBust())) {
+				System.out.println(player.getPlayerName() + " missed the game...");
 			}
 			else {
 				System.out.println(player.getPlayerName() + " won the game!!");

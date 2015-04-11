@@ -24,7 +24,7 @@ public class BjPlayer extends BaseBjPlayer {
 		}
 		int i = 0;
 		for(;;) {
-			System.out.println("Input number [1], else input [0]");
+			System.out.println("Input number [1] to add more card, else input [0]");
 			try
 			{
 				InputStreamReader reader = new InputStreamReader(System.in);
@@ -32,7 +32,7 @@ public class BjPlayer extends BaseBjPlayer {
 				String val = br.readLine().trim();
 				i = Integer.parseInt(val);
 				if (i != 1 && i != 0) {
-					System.out.println("wrong number!! please input 0 or 1.");
+					System.out.println("wrong number!! please input [0] or [1].");
 				}
 				else {
 					if (i == 1) return true;
