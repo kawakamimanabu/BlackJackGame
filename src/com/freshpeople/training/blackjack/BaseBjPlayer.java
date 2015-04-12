@@ -10,6 +10,7 @@ import java.util.List;
  */
 public abstract class BaseBjPlayer {
 	protected static int BLACKJACK_NUMBER = 21;
+	// プレイヤー名
 	private String playerName;
 	// 手持ちのカードの合計
 	protected int sum = 0;
@@ -45,6 +46,7 @@ public abstract class BaseBjPlayer {
 	 */
 	public void clearCard() {
 		myCardList.clear();
+		sum = 0;
 	}
 
 	/**
@@ -98,7 +100,6 @@ public abstract class BaseBjPlayer {
 
 	/**
 	 * 21 との差を取得する
-	 * @return diff
 	 */
 	public int getDiff() {
 		return BLACKJACK_NUMBER - sum;

@@ -20,7 +20,7 @@ public class CardManager {
 	public void init() {
 		cardList.clear();
 		for (String mark : cardMark) {
-			for (int i = 0; i < 13; i++) {
+			for (int i = 1; i <= 13; i++) {
 				Card card = new Card(mark, i);
 				cardList.add(card);
 			}
