@@ -19,7 +19,7 @@ public class BjPlayer extends BaseBjPlayer {
 	@Override
 	public boolean judgeHit() {
 		showMyCards();
-		if (bust) {
+		if (isBust()) {
 			return false;
 		}
 		int i = 0;

@@ -9,11 +9,10 @@ import java.util.List;
  *
  */
 public abstract class BaseBjPlayer {
+	protected static int BLACKJACK_NUMBER = 21;
 	private String playerName;
-	// 21 を超えたらバスト
-	protected boolean bust = false;
-	// 21 との差
-	protected int diff = 21;
+	// 手持ちのカードの合計
+	protected int sum = 0;
 	// 手持ちのカード一覧
 	protected List<Card> myCardList = new ArrayList<>();
 
@@ -38,7 +37,14 @@ public abstract class BaseBjPlayer {
 	 */
 	public void addCard(Card c) {
 		myCardList.add(c);
-		diff = 21 - getSum();
+		sum = getSum();
+	}
+	
+	/**
+	 * 手持ちのカードをクリアする
+	 */
+	public void clearCard() {
+		myCardList.clear();
 	}
 
 	/**
@@ -47,8 +53,8 @@ public abstract class BaseBjPlayer {
 	public void showMyCards() {
 		System.out.println("*** [" + playerName + "] ***");
 		myCardList.stream().forEach(System.out::println);
-		System.out.println("Sum : [" + getSum() + "], diff : [" + diff + "]");
-		if (bust) {
+		System.out.println("Sum : [" + getSum() + "], diff : [" + (BLACKJACK_NUMBER - sum) + "]");
+		if (sum > 21) {
 			System.out.println(playerName + " Busted!!");
 		}
 	}
@@ -57,11 +63,9 @@ public abstract class BaseBjPlayer {
 	 * 合計を取得する。
 	 * A（エース）は、手持ちのカードの合計が 21 を超えない範囲で 11 と数え、超える場合は 1 として数える。
 	 * J, Q, K は 10 として数える
-	 * 21 を超えた場合は bust 状態になる。
 	 * @return
 	 */
 	public int getSum() {
-		int sum = 0;
 		for (Card c : myCardList) {
 			if (c.getStringNumber().equals("A")) {
 				if (sum >= 21) {sum += 1;}
@@ -71,30 +75,31 @@ public abstract class BaseBjPlayer {
 				sum += (c.getIntNumber() > 10 ? 10 : c.getIntNumber());
 			}
 		}
-		if (sum > 21) {bust = true;}
 		return sum;
 	}
 
-	//--- getter, setter ---
+	//--- getter ---
+	/**
+	 * プレイヤーの名前を取得する
+	 * @return
+	 */
 	public String getPlayerName() {
 		return playerName;
 	}
 
-	public void setPlayerName(String playerName) {
-		this.playerName = playerName;
-	}
-
+	/**
+	 * 合計が 21 を超えていた場合は true
+	 * @return
+	 */
 	public boolean isBust() {
-		return bust;
+		return sum > 21 ? true : false;
 	}
 
 	/**
+	 * 21 との差を取得する
 	 * @return diff
 	 */
 	public int getDiff() {
-		return diff;
+		return BLACKJACK_NUMBER - sum;
 	}
-
-
-
 }
