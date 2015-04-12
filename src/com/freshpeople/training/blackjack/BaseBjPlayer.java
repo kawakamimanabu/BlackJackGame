@@ -66,6 +66,7 @@ public abstract class BaseBjPlayer {
 	 * @return
 	 */
 	public int getSum() {
+		sum = 0;
 		for (Card c : myCardList) {
 			if (c.getStringNumber().equals("A")) {
 				if (sum >= 21) {sum += 1;}
