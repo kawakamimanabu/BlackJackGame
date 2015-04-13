@@ -72,7 +72,7 @@ public class BjPlayerTest {
 
 	/**
 	 * bust 判定のテスト3
-	 * カードの合計が21の場合に Bust していること
+	 * カードの合計が22の場合に Bust していること
 	 */
 	@Test
 	public void testBust_3() {
@@ -81,6 +81,19 @@ public class BjPlayerTest {
 		bjPlayer.addCard(new Card("Club",2));
 		assertTrue(bjPlayer.isBust());
 	}
+
+	/**
+	 * judgeHit 判定のテスト
+	 * カードの合計が22の場合に Hit できないこと
+	 */
+	@Test
+	public void testJudgeHit() {
+		bjPlayer.addCard(new Card("Club",10));
+		bjPlayer.addCard(new Card("Club",11));
+		bjPlayer.addCard(new Card("Club",2));
+		assertFalse(bjPlayer.judgeHit());
+	}
+
 
 	/**
 	 * 合計値は 20 となり、Diff が 1 となること

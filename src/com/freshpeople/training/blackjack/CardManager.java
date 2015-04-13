@@ -29,14 +29,22 @@ public class CardManager {
 
 	/**
 	 * List の中から任意のカードを選んで取得する。
+	 * カードが 1 枚も無い場合は Exception を発生させること
+	 * 例外メッセージは以下の通り
+	 *  "No more card."
 	 * @return
 	 */
-	public Card getRandomCard() {
-		Random random = new Random();
-		int num = random.nextInt(cardList.size());
-		Card c = cardList.get(num);
-		cardList.remove(c);
-		return c;
+	public Card getRandomCard() throws Exception {
+		if (cardList.size() > 0) {
+			Random random = new Random();
+			int num = random.nextInt(cardList.size());
+			Card c = cardList.get(num);
+			cardList.remove(c);
+			return c;
+		}
+		else {
+			throw new Exception("No more card.");
+		}
 	}
 
 	//--- getter, setter ---

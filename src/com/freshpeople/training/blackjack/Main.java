@@ -5,8 +5,12 @@ public class Main {
 	public static void main(String[] args) {
 		BjDealer com = new BjDealer("dealer");
 		BaseBjPlayer you = new BjPlayer("you");
-		com.addBjPlayer(you);
-		com.startGame();
+		try {
+			com.addBjPlayer(you);
+			com.startGame();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 	}
 
 }
