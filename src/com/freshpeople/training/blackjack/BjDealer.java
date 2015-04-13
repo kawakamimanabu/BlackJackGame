@@ -71,6 +71,7 @@ public class BjDealer extends BaseBjPlayer implements DealerTask {
 		while (judgeHit()) {
 			addCard(cardManager.getRandomCard());
 		}
+		// 結果判定
 		judgeGame();
 	}
 
@@ -79,7 +80,7 @@ public class BjDealer extends BaseBjPlayer implements DealerTask {
 	 * 結果判定
 	 */
 	private void judgeGame() {
-		System.out.println("\n\n>>>>>>>>>>");
+		System.out.println("\n\n>>>>>>>>>> Game Result <<<<<<<<<<");
 		showMyCards();
 
 		for(BaseBjPlayer player : bjPlayerList) {
@@ -94,7 +95,7 @@ public class BjDealer extends BaseBjPlayer implements DealerTask {
 				System.out.println(player.getPlayerName() + " won the game!!");
 			}
 		}
-		System.out.println("<<<<<<<<<<");
+		System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
 	}
 
 }
