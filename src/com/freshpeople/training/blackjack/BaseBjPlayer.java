@@ -40,7 +40,7 @@ public abstract class BaseBjPlayer {
 		myCardList.add(c);
 		sum = getSum();
 	}
-	
+
 	/**
 	 * 手持ちのカードをクリアする
 	 */
@@ -63,7 +63,7 @@ public abstract class BaseBjPlayer {
 
 	/**
 	 * 合計を取得する。
-	 * A（エース）は、手持ちのカードの合計が 21 を超えない範囲で 11 と数え、超える場合は 1 として数える。
+	 * A（エース）は、手持ちのカードの合計が 21 未満では 11 と数え、21 以上の場合は 1 として数える。
 	 * J, Q, K は 10 として数える
 	 * @return
 	 */
