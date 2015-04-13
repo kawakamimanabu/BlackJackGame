@@ -68,7 +68,11 @@ public class BjDealerTest {
 	}
 
 	@Test
-	public void testStartGame() {
+	public void testGameResult() throws Exception {
+		TestCardManager cm = new TestCardManager();
+		bjDealer.setCardManagerTask(cm);
+		BaseBjPlayer player = new BjPlayer("name1");
+		bjDealer.addBjPlayer(player);
 
 	}
 

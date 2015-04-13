@@ -3,7 +3,7 @@ package com.freshpeople.training.blackjack;
 import java.util.List;
 
 /**
- * ディーラーがやるべきことのインタフェイス
+ * ディーラーが実装するメソッド
  * @author
  *
  */

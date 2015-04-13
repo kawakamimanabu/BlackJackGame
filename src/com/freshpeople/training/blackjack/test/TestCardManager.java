@@ -1,15 +1,17 @@
-package com.freshpeople.training.blackjack;
+package com.freshpeople.training.blackjack.test;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
+
+import com.freshpeople.training.blackjack.Card;
+import com.freshpeople.training.blackjack.CardManagerTask;
 
 /**
- * トランプ管理クラス
+ * Test 用トランプ管理クラス
  * @author
  *
  */
-public class CardManager implements CardManagerTask {
+public class TestCardManager implements CardManagerTask {
 	private final String[] cardMark = {"Spade", "Club", "Heart", "Diamond"};
 	private final List<Card> cardList = new ArrayList<>();
 
@@ -29,7 +31,7 @@ public class CardManager implements CardManagerTask {
 	}
 
 	/**
-	 * List の中から任意のカードを選んで取得する。
+	 * List の中から Spade -> Club -> Heart -> Diamond のカードを順番(1 to 13)に取得する。
 	 * カードが 1 枚も無い場合は Exception を発生させること
 	 * 例外メッセージは以下の通り
 	 *  "No more card."
@@ -38,9 +40,7 @@ public class CardManager implements CardManagerTask {
 	@Override
 	public Card getRandomCard() throws Exception {
 		if (cardList.size() > 0) {
-			Random random = new Random();
-			int num = random.nextInt(cardList.size());
-			Card c = cardList.get(num);
+			Card c = cardList.get(0);
 			cardList.remove(c);
 			return c;
 		}

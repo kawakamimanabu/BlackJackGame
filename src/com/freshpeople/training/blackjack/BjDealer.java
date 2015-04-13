@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
  *
  */
 public class BjDealer extends BaseBjPlayer implements DealerTask {
-	private CardManager cardManager = new CardManager();
+	private CardManagerTask cardManagerTask = new CardManager();
 	private List<BaseBjPlayer> bjPlayerList = new ArrayList<>();
 
 	// この数以下の場合は必ずヒットする
@@ -61,7 +61,7 @@ public class BjDealer extends BaseBjPlayer implements DealerTask {
 	@Override
 	public void startGame() throws Exception {
 		// カードを初期化
-		cardManager.init();
+		cardManagerTask.init();
 		// ディーラーを含む全プレイヤーにカードを配る
 		dealCards();
 		// ディーラー自身の最初の 1 枚を公開する
@@ -83,13 +83,14 @@ public class BjDealer extends BaseBjPlayer implements DealerTask {
 	 * @throws Exception
 	 */
 	private void dealCards() throws Exception {
-		// ディーラーを除く全 Player に 2 枚ずつカードを配る
+		// 全 Player に 2 枚ずつカードを配る
 		for (BaseBjPlayer player : bjPlayerList) {
-			player.addCard(cardManager.getRandomCard());
-			player.addCard(cardManager.getRandomCard());
+			player.addCard(cardManagerTask.getRandomCard());
+			player.addCard(cardManagerTask.getRandomCard());
 		}
-		addCard(cardManager.getRandomCard());
-		addCard(cardManager.getRandomCard());
+		// ディーラー自身にカードを配る
+		addCard(cardManagerTask.getRandomCard());
+		addCard(cardManagerTask.getRandomCard());
 	}
 
 	/**
@@ -100,7 +101,7 @@ public class BjDealer extends BaseBjPlayer implements DealerTask {
 	 */
 	private void askHitDealCard(BaseBjPlayer player) throws Exception {
 		while (player.judgeHit()) {
-			player.addCard(cardManager.getRandomCard());
+			player.addCard(cardManagerTask.getRandomCard());
 		}
 	}
 
@@ -129,10 +130,10 @@ public class BjDealer extends BaseBjPlayer implements DealerTask {
 	//--- getter, setter ---
 	/**
 	 * cardManager をセットする
-	 * @param cardManager
+	 * @param cardManagerTask
 	 */
-	public void setCardManager(CardManager cardManager) {
-		this.cardManager = cardManager;
+	public void setCardManagerTask(CardManagerTask cardManagerTask) {
+		this.cardManagerTask = cardManagerTask;
 	}
 
 }
