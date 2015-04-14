@@ -14,6 +14,9 @@ import java.util.stream.Collectors;
 public class BjDealer extends BaseBjPlayer implements DealerTask {
 	private CardManagerTask cardManagerTask = new CardManager();
 	private List<BaseBjPlayer> bjPlayerList = new ArrayList<>();
+	private List<BaseBjPlayer> winList		= new ArrayList<>();
+	private List<BaseBjPlayer> loseList		= new ArrayList<>();
+	private List<BaseBjPlayer> drawList		= new ArrayList<>();
 
 	// この数以下の場合は必ずヒットする
 	private int point = 16;
@@ -60,6 +63,10 @@ public class BjDealer extends BaseBjPlayer implements DealerTask {
 
 	@Override
 	public void startGame() throws Exception {
+		// 勝敗者リストを初期化
+		winList.clear();
+		loseList.clear();
+		drawList.clear();
 		// カードを初期化
 		cardManagerTask.init();
 		// ディーラーを含む全プレイヤーにカードを配る
@@ -115,12 +122,15 @@ public class BjDealer extends BaseBjPlayer implements DealerTask {
 			player.showMyCards();
 			if (player.isBust() && isBust() || player.getDiff() == getDiff()) {
 				System.out.println("Draw.");
+				drawList.add(player);
 			}
 			else if (player.isBust() && !isBust() || (player.getDiff() > getDiff() && !isBust())) {
 				System.out.println(player.getPlayerName() + " missed the game...");
+				loseList.add(player);
 			}
 			else {
 				System.out.println(player.getPlayerName() + " won the game!!");
+				winList.add(player);
 			}
 		}
 		System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
@@ -135,5 +145,27 @@ public class BjDealer extends BaseBjPlayer implements DealerTask {
 	public void setCardManagerTask(CardManagerTask cardManagerTask) {
 		this.cardManagerTask = cardManagerTask;
 	}
+
+	/**
+	 * @return winList
+	 */
+	public List<BaseBjPlayer> getWinList() {
+		return winList;
+	}
+
+	/**
+	 * @return loseList
+	 */
+	public List<BaseBjPlayer> getLoseList() {
+		return loseList;
+	}
+
+	/**
+	 * @return drawList
+	 */
+	public List<BaseBjPlayer> getDrawList() {
+		return drawList;
+	}
+
 
 }

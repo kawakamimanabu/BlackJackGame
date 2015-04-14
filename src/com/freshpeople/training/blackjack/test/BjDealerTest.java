@@ -11,6 +11,7 @@ import org.junit.rules.ExpectedException;
 import com.freshpeople.training.blackjack.BaseBjPlayer;
 import com.freshpeople.training.blackjack.BjDealer;
 import com.freshpeople.training.blackjack.BjPlayer;
+import com.freshpeople.training.blackjack.CardManagerTask;
 
 public class BjDealerTest {
 
@@ -67,13 +68,55 @@ public class BjDealerTest {
 		}
 	}
 
+	/**
+	 * 勝敗判定のテスト
+	 * プレイヤーが負けること
+	 * @throws Exception
+	 */
 	@Test
-	public void testGameResult() throws Exception {
-		TestCardManager cm = new TestCardManager();
+	public void testStartGameLose() throws Exception {
+		// テスト用カード管理クラスを設定
+		CardManagerTask cm = new TestCardManagerToLose();
 		bjDealer.setCardManagerTask(cm);
-		BaseBjPlayer player = new BjPlayer("name1");
+		// テスト用プレイヤーの追加
+		BaseBjPlayer player = new TestBjPlayer("name1");
 		bjDealer.addBjPlayer(player);
+		bjDealer.startGame();
+		assertTrue(bjDealer.getLoseList().size() == 1 && bjDealer.getLoseList().get(0).getPlayerName().equals("name1"));
+	}
 
+	/**
+	 * 勝敗判定のテスト
+	 * プレイヤーが勝つこと
+	 * @throws Exception
+	 */
+	@Test
+	public void testStartGameWin() throws Exception {
+		// テスト用カード管理クラスを設定
+		CardManagerTask cm = new TestCardManagerToWin();
+		bjDealer.setCardManagerTask(cm);
+		// テスト用プレイヤーの追加
+		BaseBjPlayer player = new TestBjPlayer("name1");
+		bjDealer.addBjPlayer(player);
+		bjDealer.startGame();
+		assertTrue(bjDealer.getWinList().size() == 1 && bjDealer.getWinList().get(0).getPlayerName().equals("name1"));
+	}
+
+	/**
+	 * 勝敗判定のテスト
+	 * 引き分けとなること
+	 * @throws Exception
+	 */
+	@Test
+	public void testStartGameDraw() throws Exception {
+		// テスト用カード管理クラスを設定
+		CardManagerTask cm = new TestCardManagerToDraw();
+		bjDealer.setCardManagerTask(cm);
+		// テスト用プレイヤーの追加
+		BaseBjPlayer player = new TestBjPlayer("name1");
+		bjDealer.addBjPlayer(player);
+		bjDealer.startGame();
+		assertTrue(bjDealer.getDrawList().size() == 1 && bjDealer.getDrawList().get(0).getPlayerName().equals("name1"));
 	}
 
 }

@@ -3,14 +3,14 @@ package com.freshpeople.training.blackjack.test;
 import com.freshpeople.training.blackjack.BaseBjPlayer;
 
 /**
- * テスト用 BOT Bjプレイヤー
+ * テスト用 Bjプレイヤー
  * @author
  *
  */
 public class TestBjPlayer extends BaseBjPlayer {
 
 	public TestBjPlayer(String playerName) {
-		super("Bot");
+		super(playerName);
 	}
 
 	@Override

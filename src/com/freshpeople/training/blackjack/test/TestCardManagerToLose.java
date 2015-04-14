@@ -11,7 +11,7 @@ import com.freshpeople.training.blackjack.CardManagerTask;
  * @author
  *
  */
-public class TestCardManager implements CardManagerTask {
+public class TestCardManagerToLose implements CardManagerTask {
 	private final String[] cardMark = {"Spade", "Club", "Heart", "Diamond"};
 	private final List<Card> cardList = new ArrayList<>();
 
