@@ -23,25 +23,10 @@ public class CardManagerTest {
 	@Rule
 	public ExpectedException thrown = ExpectedException.none();
 
-//	@BeforeClass
-//	public static void setUpBeforeClass() throws Exception {
-//		System.out.println("@BeforeClass call");
-//	}
-//
-//	@AfterClass
-//	public static void tearDownAfterClass() throws Exception {
-//		System.out.println("@AfterClass call");
-//	}
-
 	@Before
 	public void setUp() throws Exception {
 		cardManager = new CardManager();
 	}
-
-//	@After
-//	public void tearDown() throws Exception {
-//		cardManager = null;
-//	}
 
 	@Test
 	public void testInit() {
