@@ -38,7 +38,7 @@ public abstract class BaseBjPlayer {
 	 */
 	public void addCard(Card c) {
 		myCardList.add(c);
-		sum = getSum();
+		calcSum();
 	}
 
 	/**
@@ -55,30 +55,10 @@ public abstract class BaseBjPlayer {
 	public void showMyCards() {
 		System.out.println("*** [" + playerName + "] ***");
 		myCardList.stream().forEach(System.out::println);
-		System.out.println("Sum : [" + getSum() + "], diff : [" + (BLACKJACK_NUMBER - sum) + "]");
+		System.out.println("Sum : [" + sum + "], diff : [" + (BLACKJACK_NUMBER - sum) + "]");
 		if (sum > 21) {
 			System.out.println(playerName + " Busted!!");
 		}
-	}
-
-	/**
-	 * 合計を取得する。
-	 * A（エース）は、手持ちのカードの合計が 21 未満では 11 と数え、21 以上の場合は 1 として数える。
-	 * J, Q, K は 10 として数える
-	 * @return
-	 */
-	public int getSum() {
-		sum = 0;
-		for (Card c : myCardList) {
-			if (c.getStringNumber().equals("A")) {
-				if (sum >= 21) {sum += 1;}
-				else {sum += 11;}
-			}
-			else {
-				sum += (c.getIntNumber() > 10 ? 10 : c.getIntNumber());
-			}
-		}
-		return sum;
 	}
 
 	/* (非 Javadoc)
@@ -113,6 +93,25 @@ public abstract class BaseBjPlayer {
 		return true;
 	}
 
+	//--- private methods ---
+	/**
+	 * 合計を取得する。
+	 * A（エース）は、手持ちのカードの合計が 21 未満では 11 と数え、21 以上の場合は 1 として数える。
+	 * J, Q, K は 10 として数える
+	 */
+	private void calcSum() {
+		sum = 0;
+		for (Card c : myCardList) {
+			if (c.getStringNumber().equals("A")) {
+				if (sum >= 21) {sum += 1;}
+				else {sum += 11;}
+			}
+			else {
+				sum += (c.getIntNumber() > 10 ? 10 : c.getIntNumber());
+			}
+		}
+	}
+
 	//--- getter ---
 	/**
 	 * プレイヤーの名前を取得する
@@ -128,6 +127,13 @@ public abstract class BaseBjPlayer {
 	 */
 	public boolean isBust() {
 		return sum > 21 ? true : false;
+	}
+
+	/**
+	 * @return sum
+	 */
+	public int getSum() {
+		return sum;
 	}
 
 	/**
