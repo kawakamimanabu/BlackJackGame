@@ -79,7 +79,7 @@ public class CardManagerTest {
 		thrown.equals(Exception.class);
 		thrown.expectMessage("No more card.");
 		for (int i =0; i <= size; i++) {
-			Card c = cardManager.getRandomCard();
+			cardManager.getRandomCard();
 		}
 
 	}
