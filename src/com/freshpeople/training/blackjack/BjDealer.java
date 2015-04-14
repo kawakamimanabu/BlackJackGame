@@ -166,6 +166,4 @@ public class BjDealer extends BaseBjPlayer implements DealerTask {
 	public List<BaseBjPlayer> getDrawList() {
 		return drawList;
 	}
-
-
 }

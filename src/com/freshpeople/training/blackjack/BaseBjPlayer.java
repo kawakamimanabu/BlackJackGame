@@ -123,7 +123,7 @@ public abstract class BaseBjPlayer {
 	}
 
 	/**
-	 * 合計が 21 を超えていた場合は true
+	 * 合計が BLACKJACK_NUMBER を超えていた場合は true
 	 * @return
 	 */
 	public boolean isBust() {
@@ -131,7 +131,7 @@ public abstract class BaseBjPlayer {
 	}
 
 	/**
-	 * 21 との差を取得する
+	 * BLACKJACK_NUMBER との差を取得する
 	 */
 	public int getDiff() {
 		return BLACKJACK_NUMBER - sum;
