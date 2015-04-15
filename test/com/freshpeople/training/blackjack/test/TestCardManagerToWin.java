@@ -1,19 +1,16 @@
 package com.freshpeople.training.blackjack.test;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.freshpeople.training.blackjack.Card;
-import com.freshpeople.training.blackjack.CardManagerTask;
 
 /**
  * Test 用トランプ管理クラス
+ * 必ずプレイヤーが勝つようにカードを設定する
  * @author
  *
  */
-public class TestCardManagerToWin implements CardManagerTask {
-	private final String[] cardMark = {"Spade", "Club", "Heart", "Diamond"};
-	private final List<Card> cardList = new ArrayList<>();
+public class TestCardManagerToWin extends TestBaseCardManager {
 
 	//--- public methods ---
 	/**
