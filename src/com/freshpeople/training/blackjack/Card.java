@@ -17,12 +17,6 @@ public class Card {
 	 * @param number
 	 */
 	public Card(String mark, int number) {
-		this.mark = mark;
-		if (number == 1) {this.number = "A";}
-		else if (number == 11) {this.number = "J";}
-		else if (number == 12) {this.number = "Q";}
-		else if (number == 13) {this.number = "K";}
-		else {this.number = String.valueOf(number);}
 	}
 
 	/**
@@ -30,7 +24,6 @@ public class Card {
 	 * @return
 	 */
 	public String getMark() {
-		return mark;
 	}
 
 	/**
@@ -38,11 +31,6 @@ public class Card {
 	 * @return
 	 */
 	public int getIntNumber() {
-		if (number.equals("A")) {return 1;}
-		else if (number.equals("J")) {return 11;}
-		else if (number.equals("Q")) {return 12;}
-		else if (number.equals("K")) {return 13;}
-		else {return Integer.parseInt(number);}
 	}
 
 	/**
@@ -51,7 +39,6 @@ public class Card {
 	 * @return
 	 */
 	public String getStringNumber() {
-		return number;
 	}
 
 	@Override
