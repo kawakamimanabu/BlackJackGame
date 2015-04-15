@@ -42,7 +42,7 @@ public class CardManagerTest {
 
 　　　　/**
 　　　　 * 52 枚以上のカードを取得しようとした際に例外が発生すること
-　　　　 * /
+　　　　 */
 	@Test
 	public void testGetRandomCard_2() throws Exception {
 	}
