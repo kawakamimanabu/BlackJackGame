@@ -22,7 +22,6 @@ public abstract class BaseBjPlayer {
 	 * @param playerName
 	 */
 	public BaseBjPlayer(String playerName) {
-		this.playerName = playerName;
 	}
 
 	//--- public methods ---
@@ -37,28 +36,18 @@ public abstract class BaseBjPlayer {
 	 * @param c
 	 */
 	public void addCard(Card c) {
-		myCardList.add(c);
-		calcSum();
 	}
 
 	/**
 	 * 手持ちのカードをクリアする
 	 */
 	public void clearCard() {
-		myCardList.clear();
-		sum = 0;
 	}
 
 	/**
 	 * 手持ちのカードを表示する。
 	 */
 	public void showMyCards() {
-		System.out.println("*** [" + playerName + "] ***");
-		myCardList.stream().forEach(System.out::println);
-		System.out.println("Sum : [" + sum + "], diff : [" + (BLACKJACK_NUMBER - sum) + "]");
-		if (sum > 21) {
-			System.out.println(playerName + " Busted!!");
-		}
 	}
 
 	/* (非 Javadoc)
@@ -100,16 +89,6 @@ public abstract class BaseBjPlayer {
 	 * J, Q, K は 10 として数える
 	 */
 	private void calcSum() {
-		sum = 0;
-		for (Card c : myCardList) {
-			if (c.getStringNumber().equals("A")) {
-				if (sum >= 21) {sum += 1;}
-				else {sum += 11;}
-			}
-			else {
-				sum += (c.getIntNumber() > 10 ? 10 : c.getIntNumber());
-			}
-		}
 	}
 
 	//--- getter ---
@@ -118,7 +97,6 @@ public abstract class BaseBjPlayer {
 	 * @return
 	 */
 	public String getPlayerName() {
-		return playerName;
 	}
 
 	/**
@@ -126,20 +104,17 @@ public abstract class BaseBjPlayer {
 	 * @return
 	 */
 	public boolean isBust() {
-		return sum > 21 ? true : false;
 	}
 
 	/**
 	 * @return sum
 	 */
 	public int getSum() {
-		return sum;
 	}
 
 	/**
 	 * BLACKJACK_NUMBER との差を取得する
 	 */
 	public int getDiff() {
-		return BLACKJACK_NUMBER - sum;
 	}
 }
