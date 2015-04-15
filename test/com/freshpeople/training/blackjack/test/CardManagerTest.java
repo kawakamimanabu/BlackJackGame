@@ -25,47 +25,25 @@ public class CardManagerTest {
 
 	@Before
 	public void setUp() throws Exception {
-		cardManager = new CardManager();
 	}
 
 	@Test
 	public void testInit() {
-		assertEquals(cardManager.getCardList().size(), 0);
-		cardManager.init();
-		assertEquals(cardManager.getCardList().size(), 52);
 	}
 
 	/**
 	 * 52 枚のカードが重複無くランダムに取得されること
+	 * ランダムに取得できるかは、カードをコンソール表示して目視確認とする
 	 * @throws Exception
 	 */
 	@Test
 	public void testGetRandomCard() throws Exception {
-		cardManager.init();
-		ArrayList<Card> list = new ArrayList<>();
-		int size = cardManager.getCardList().size();
-		for (int i =0; i < size; i++) {
-			Card c = cardManager.getRandomCard();
-			if (!list.contains(c)) {
-				System.out.println(c);
-				list.add(c);
-			}
-			else {
-				fail("Duplicate card");
-			}
-		}
-		assertTrue(list.size() == size);
 	}
 
+　　　　/**
+　　　　 * 52 枚以上のカードを取得しようとした際に例外が発生すること
+　　　　 * /
 	@Test
 	public void testGetRandomCard_2() throws Exception {
-		cardManager.init();
-		int size = cardManager.getCardList().size();
-		thrown.equals(Exception.class);
-		thrown.expectMessage("No more card.");
-		for (int i =0; i <= size; i++) {
-			cardManager.getRandomCard();
-		}
-
 	}
 }
