@@ -1,17 +1,12 @@
 package com.freshpeople.training.blackjack.test;
 
-import static org.junit.Assert.*;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import com.freshpeople.training.blackjack.BaseBjPlayer;
 import com.freshpeople.training.blackjack.BjDealer;
-import com.freshpeople.training.blackjack.BjPlayer;
-import com.freshpeople.training.blackjack.CardManagerTask;
 
 public class BjDealerTest {
 
@@ -53,35 +48,35 @@ public class BjDealerTest {
 
 	/**
 	 * 勝敗判定のテスト
-	 * プレイヤーが負けること
+	 * プレイヤーが負けることのテスト
 	 * @throws Exception
 	 */
 	@Test
 	public void testStartGameLose() throws Exception {
 		// テスト用カード管理クラスを設定
-		// テスト用プレイヤーの追加
+		// テスト用プレイヤー 1 名の追加
 	}
 
 	/**
 	 * 勝敗判定のテスト
-	 * プレイヤーが勝つこと
+	 * プレイヤーが勝つことのテスト
 	 * @throws Exception
 	 */
 	@Test
 	public void testStartGameWin() throws Exception {
 		// テスト用カード管理クラスを設定
-		// テスト用プレイヤーの追加
+		// テスト用プレイヤー 1 名の追加
 	}
 
 	/**
 	 * 勝敗判定のテスト
-	 * 引き分けとなること
+	 * 引き分けとなることのテスト
 	 * @throws Exception
 	 */
 	@Test
 	public void testStartGameDraw() throws Exception {
 		// テスト用カード管理クラスを設定
-		// テスト用プレイヤーの追加
+		// テスト用プレイヤー 1 名の追加
 	}
 
 }
