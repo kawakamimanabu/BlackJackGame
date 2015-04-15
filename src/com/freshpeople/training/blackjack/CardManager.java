@@ -19,13 +19,6 @@ public class CardManager implements CardManagerTask {
 	 */
 	@Override
 	public void init() {
-		cardList.clear();
-		for (String mark : cardMark) {
-			for (int i = 1; i <= 13; i++) {
-				Card card = new Card(mark, i);
-				cardList.add(card);
-			}
-		}
 	}
 
 	/**
@@ -37,16 +30,6 @@ public class CardManager implements CardManagerTask {
 	 */
 	@Override
 	public Card getRandomCard() throws Exception {
-		if (cardList.size() > 0) {
-			Random random = new Random();
-			int num = random.nextInt(cardList.size());
-			Card c = cardList.get(num);
-			cardList.remove(c);
-			return c;
-		}
-		else {
-			throw new Exception("No more card.");
-		}
 	}
 
 	//--- getter, setter ---
