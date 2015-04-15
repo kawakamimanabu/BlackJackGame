@@ -21,7 +21,6 @@ public class BjDealerTest {
 
 	@Before
 	public void setUp() throws Exception {
-		bjDealer = new BjDealer("dealer");
 	}
 
 	@After
@@ -34,11 +33,6 @@ public class BjDealerTest {
 	 */
 	@Test
 	public void testAddBjPlayer_1() throws Exception {
-		for (int i = 0; i < 5; i++) {
-			BaseBjPlayer player = new BjPlayer("name" + i);
-			bjDealer.addBjPlayer(player);
-		}
-		assertEquals(bjDealer.getPlayerNameList().size(), 5);
 	}
 
 	/**
@@ -47,12 +41,6 @@ public class BjDealerTest {
 	 */
 	@Test
 	public void testAddBjPlayer_2() throws Exception {
-		BaseBjPlayer player = new BjPlayer("name1");
-		bjDealer.addBjPlayer(player);
-		BaseBjPlayer player2 = new BjPlayer("name1");
-		thrown.equals(Exception.class);
-		thrown.expectMessage("Duplicate BlackJack Player Name.[name1]");
-		bjDealer.addBjPlayer(player2);
 	}
 
 	/**
@@ -61,11 +49,6 @@ public class BjDealerTest {
 	 */
 	@Test
 	public void testGetPlayerNameList() throws Exception {
-		for (int i = 0; i < 5; i++) {
-			BaseBjPlayer player = new BjPlayer("name" + i);
-			bjDealer.addBjPlayer(player);
-			assertEquals(bjDealer.getPlayerNameList().get(i), "name" + i);
-		}
 	}
 
 	/**
@@ -76,13 +59,7 @@ public class BjDealerTest {
 	@Test
 	public void testStartGameLose() throws Exception {
 		// テスト用カード管理クラスを設定
-		CardManagerTask cm = new TestCardManagerToLose();
-		bjDealer.setCardManagerTask(cm);
 		// テスト用プレイヤーの追加
-		BaseBjPlayer player = new TestBjPlayer("name1");
-		bjDealer.addBjPlayer(player);
-		bjDealer.startGame();
-		assertTrue(bjDealer.getLoseList().size() == 1 && bjDealer.getLoseList().get(0).getPlayerName().equals("name1"));
 	}
 
 	/**
@@ -93,13 +70,7 @@ public class BjDealerTest {
 	@Test
 	public void testStartGameWin() throws Exception {
 		// テスト用カード管理クラスを設定
-		CardManagerTask cm = new TestCardManagerToWin();
-		bjDealer.setCardManagerTask(cm);
 		// テスト用プレイヤーの追加
-		BaseBjPlayer player = new TestBjPlayer("name1");
-		bjDealer.addBjPlayer(player);
-		bjDealer.startGame();
-		assertTrue(bjDealer.getWinList().size() == 1 && bjDealer.getWinList().get(0).getPlayerName().equals("name1"));
 	}
 
 	/**
@@ -110,13 +81,7 @@ public class BjDealerTest {
 	@Test
 	public void testStartGameDraw() throws Exception {
 		// テスト用カード管理クラスを設定
-		CardManagerTask cm = new TestCardManagerToDraw();
-		bjDealer.setCardManagerTask(cm);
 		// テスト用プレイヤーの追加
-		BaseBjPlayer player = new TestBjPlayer("name1");
-		bjDealer.addBjPlayer(player);
-		bjDealer.startGame();
-		assertTrue(bjDealer.getDrawList().size() == 1 && bjDealer.getDrawList().get(0).getPlayerName().equals("name1"));
 	}
 
 }
