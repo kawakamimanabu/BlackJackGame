@@ -1,15 +1,10 @@
 package com.freshpeople.training.blackjack.test;
 
-import static org.junit.Assert.*;
-
-import java.util.ArrayList;
-
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import com.freshpeople.training.blackjack.Card;
 import com.freshpeople.training.blackjack.CardManager;
 
 /**
@@ -40,9 +35,9 @@ public class CardManagerTest {
 	public void testGetRandomCard() throws Exception {
 	}
 
-　　　　/**
-　　　　 * 52 枚以上のカードを取得しようとした際に例外が発生すること
-　　　　 */
+	/**
+	 * 52 枚以上のカードを取得しようとした際に例外が発生すること
+	 */
 	@Test
 	public void testGetRandomCard_2() throws Exception {
 	}
