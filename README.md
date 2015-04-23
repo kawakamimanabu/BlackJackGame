@@ -1,4 +1,6 @@
 # BlackJackGame
+This is console application for training.
+----
 このプロジェクトは、2015 年度入社の新卒さんたちのためのプログラミング練習課題です。
 
 トランプゲームの「ブラックジャック」を作成しました。
