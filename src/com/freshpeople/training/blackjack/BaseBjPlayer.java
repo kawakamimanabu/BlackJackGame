@@ -56,7 +56,7 @@ public abstract class BaseBjPlayer {
 		System.out.println("*** [" + playerName + "] ***");
 		myCardList.stream().forEach(System.out::println);
 		System.out.println("Sum : [" + sum + "], diff : [" + (BLACKJACK_NUMBER - sum) + "]");
-		if (sum > 21) {
+		if (sum > BLACKJACK_NUMBER) {
 			System.out.println(playerName + " Busted!!");
 		}
 	}
@@ -103,7 +103,7 @@ public abstract class BaseBjPlayer {
 		sum = 0;
 		for (Card c : myCardList) {
 			if (c.getStringNumber().equals("A")) {
-				if (sum >= 21) {sum += 1;}
+				if (sum >= BLACKJACK_NUMBER) {sum += 1;}
 				else {sum += 11;}
 			}
 			else {
@@ -126,7 +126,7 @@ public abstract class BaseBjPlayer {
 	 * @return
 	 */
 	public boolean isBust() {
-		return sum > 21 ? true : false;
+		return sum > BLACKJACK_NUMBER ? true : false;
 	}
 
 	/**
